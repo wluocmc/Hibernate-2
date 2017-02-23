@@ -17,13 +17,12 @@ public class Responsible {
     private String firstName;
     @Column(name = "lastName")
     private String lastName;
-    @Column(name = "accountNumber")
+    @Column(name = "accountNum")
     private long accountNumber;
 
     public Responsible(){}
 
-    public Responsible(int customerId, String firstName, String lastName) {
-        this.customerId = customerId;
+    public Responsible( String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

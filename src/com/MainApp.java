@@ -11,6 +11,14 @@ public class MainApp {
         ApplicationContext beansContext=new ClassPathXmlApplicationContext("Beans.xml");
         SetupDatabase setupDatabase=(SetupDatabase) beansContext.getBean("myDBSetup");
         setupDatabase.ApplyStructure();
-        setupDatabase.ApplyData();
+//        setupDatabase.ApplyData();
+        DataGenerator mydata=(DataGenerator) beansContext.getBean("dataGenerator");
+        HibernateExecutor executor=new HibernateExecutor();
+        if(executor.StarFactorySuccess()){
+            executor.saveCustomer(mydata.getCustomer());
+        }
+
+//        executor.printCustomer();
+        executor.FactoryShutdown();
     }
 }

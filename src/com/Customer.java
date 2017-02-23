@@ -19,7 +19,11 @@ public class Customer {
     @Column(name="lastName")
     private String lastName;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="customerId")
+//    @PrimaryKeyJoinColumn(name = "id",referencedColumnName = "customerId")
+//    @PrimaryKeyJoinColumn(name = "customerId",referencedColumnName = "id")
+//    @JoinColumn(name = "customerId",referencedColumnName = "id")
+//    @JoinColumn(name = "id",referencedColumnName = "customerId")
+//    @JoinColumn(name="customerId")
     private Set<Responsible> Authorized;
 
     public Customer(){}
@@ -68,6 +72,16 @@ public class Customer {
 
     public void setAuthorized(Set<Responsible> authorized) {
         Authorized = authorized;
+        for(Responsible individual: authorized){
+            individual.setAccountNumber(this.getAccountNum());
+            individual.setCustomerId(this.getId());
+        }
+    }
+    public void setAuthorized() {
+        for(Responsible individual: this.getAuthorized()){
+            individual.setAccountNumber(this.getAccountNum());
+            //individual.setCustomerId(this.getId());
+        }
     }
 
 

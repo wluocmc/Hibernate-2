@@ -3,12 +3,13 @@
         "-//Hibernate/Hibernate Configuration DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
+
   <session-factory>
     <property name="hibernate.dialect">
       org.hibernate.dialect.MySQLDialect
     </property>
     <property name="connection.url">
-      jdbc:mysql://localhost:3306/HIBERATE-TEST
+      jdbc:mysql://localhost:3306/Hibernate-2
     </property>
     <property name="connection.driver_class">
       com.mysql.jdbc.Driver
@@ -19,11 +20,17 @@
     <property name="connection.password">
       tomcat$123
     </property>
+    <property name="hbm2ddl.auto">
+      update
+    </property>
+    <property name="hibernate.id.new_generator_mappings">false</property>
     <!-- List of XML mapping files -->
     <!--<mapping resource="Employee.hbm.xml"/>-->
 
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
+    <mapping class="com.Customer" />
+    <mapping class="com.Responsible" />
   </session-factory>
 </hibernate-configuration>
