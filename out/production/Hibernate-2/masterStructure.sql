@@ -5,7 +5,7 @@ USE `Hibernate-2`;
 DROP TABLE IF EXISTS Customer;
 CREATE TABLE Customer(
   id INT NOT NULL AUTO_INCREMENT,
-  accountNum BIGINT NOT NULL,
+  accountNum BIGINT DEFAULT NULL,
   firstName VARCHAR(30) NOT NULL ,
   lastName VARCHAR(30) NOT NULL ,
   PRIMARY KEY (id)
@@ -14,10 +14,11 @@ CREATE TABLE Customer(
 DROP TABLE IF EXISTS Responsible;
 CREATE TABLE Responsible(
   id INT NOT NULL AUTO_INCREMENT,
-  customerId INT NOT NULL ,
+  customerId INT DEFAULT NULL ,
   firstName VARCHAR(30) NOT NULL ,
   lastName VARCHAR(30) NOT NULL ,
-  accountNum BIGINT NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (customerId) REFERENCES Customer(id)
+  accountNum BIGINT DEFAULT NULL,
+  PRIMARY KEY (id)
+--   FOREIGN KEY (customerId) REFERENCES Customer(id)
 );
+
