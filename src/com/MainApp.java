@@ -18,7 +18,7 @@ public class MainApp {
             executor.saveCustomer(mydata.getCustomer());
         }
 
-//        executor.printCustomer();
+        executor.printCustomer();
         executor.FactoryShutdown();
     }
 }

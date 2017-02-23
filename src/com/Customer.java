@@ -18,12 +18,11 @@ public class Customer {
     private String firstName;
     @Column(name="lastName")
     private String lastName;
-    @OneToMany(cascade = CascadeType.ALL)
-//    @PrimaryKeyJoinColumn(name = "id",referencedColumnName = "customerId")
-//    @PrimaryKeyJoinColumn(name = "customerId",referencedColumnName = "id")
-//    @JoinColumn(name = "customerId",referencedColumnName = "id")
-//    @JoinColumn(name = "id",referencedColumnName = "customerId")
-//    @JoinColumn(name="customerId")
+
+//  fetchtype.EAGER mean when Customer is loader all associated Authorized will be loaded AS Well.
+//  it is default to lazy, which will not load Authorized.
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name="customerId")
     private Set<Responsible> Authorized;
 
     public Customer(){}
@@ -74,13 +73,11 @@ public class Customer {
         Authorized = authorized;
         for(Responsible individual: authorized){
             individual.setAccountNumber(this.getAccountNum());
-            individual.setCustomerId(this.getId());
         }
     }
     public void setAuthorized() {
         for(Responsible individual: this.getAuthorized()){
             individual.setAccountNumber(this.getAccountNum());
-            //individual.setCustomerId(this.getId());
         }
     }
 

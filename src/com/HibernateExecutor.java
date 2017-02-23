@@ -61,12 +61,13 @@ public class HibernateExecutor {
     public void printCustomer(){
         List<Customer> customers=readCustomer();
         for(Customer eachCustomer: customers){
+            Set<Responsible> responsibles=eachCustomer.getAuthorized();
             System.out.println("--------------------------------Customer");
             System.out.println("Customer id: "+eachCustomer.getId());
             System.out.println("Customer firstName: "+eachCustomer.getFirstName());
             System.out.println("Customer lastName: "+eachCustomer.getLastName());
             System.out.println("Customer accountNum: "+eachCustomer.getAccountNum());
-            Set<Responsible> responsibles=eachCustomer.getAuthorized();
+
             for(Responsible eachResponsible: responsibles){
                 System.out.println("---Responsible");
                 System.out.println("***Responsible id: "+eachResponsible.getId());

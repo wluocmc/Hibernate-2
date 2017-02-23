@@ -11,7 +11,8 @@ public class Responsible {
     @Id@GeneratedValue
     @Column(name = "id")
     private int id;
-    @Column(name = "customerId")
+//    if we set insertable =false, it means responsible instance will not use customerId to populate Responsible table- customerId field
+    @Column(name = "customerId",insertable = false,updatable = false)
     private int customerId;
     @Column(name = "firstName")
     private String firstName;
